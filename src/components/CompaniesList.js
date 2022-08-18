@@ -1,18 +1,16 @@
 import PropTypes from 'prop-types';
 import CompanyCard from './CompanyCard';
-import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
 
 export default function CompaniesList(props) {
     const { companies } = props
 
     return (
-        <Grid container fixed spacing={2}>
+        <Paper sx={{ overflow: 'auto', marginTop: '20px', padding: '0 20px', border: 'solid 1px rgba(0, 0, 0, 0.23)' }} data-testid="companies-list">
             {companies.map(c => (
-                <Grid key={c.id} item xs={12}>
-                    <CompanyCard company={c} />
-                </Grid>
+                <CompanyCard key={c.id} company={c} />
             ))}
-        </Grid>
+        </Paper>
     )
 }
 

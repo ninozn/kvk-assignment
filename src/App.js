@@ -30,18 +30,19 @@ function App() {
   }
 
   return (
-    <Box>
+    <Box sx={{ display: 'flex', flexDirection: 'column', overflow: 'hidden', background: '#f9f9f9' }}>
       <Header />
 
-      <Container fixed sx={{ paddingTop: "24px", paddingBottom: "24px" }}>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <SearchField />
-          </Grid>
-          <Grid item xs={12}>
-            <CompaniesList companies={companies} />
-          </Grid>
-        </Grid >
+      <Container fixed sx={{
+        paddingTop: "24px",
+        paddingBottom: "24px",
+        display: "flex",
+        flexDirection: "column",
+        flex: 1,
+        overflow: 'hidden'
+      }}>
+        <SearchField />
+        <CompaniesList companies={companies} />
       </Container>
 
       <Snackbar

@@ -15,7 +15,7 @@ export default function CompanyCard(props) {
     }
 
     return (
-        <Card sx={{ display: 'flex', cursor: 'pointer' }} onClick={getCompanyDetails}>
+        <Card sx={{ display: 'flex', cursor: 'pointer', margin: "10px" }} variant="outlined" onClick={getCompanyDetails}>
             <CardMedia
                 component="img"
                 sx={{ width: 120 }}
@@ -34,7 +34,7 @@ export default function CompanyCard(props) {
                 </Box>
             </CardContent>
             <CardActions>
-                <Button size="small">Meer info</Button>
+                <Button size="small" color="inherit">Meer info</Button>
             </CardActions>
         </Card>
     )
