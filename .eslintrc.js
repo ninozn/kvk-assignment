@@ -15,6 +15,6 @@ module.exports = {
         "prettier/prettier": 0,
         "no-unused-vars": "off",
         "quotes": [2, "double", { "avoidEscape": true }],
-        "semi": ["error", "never"],
+        "semi": ["error", "never"]
     },
 }

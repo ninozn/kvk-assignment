@@ -16,17 +16,19 @@ import styles from "./styles/App.module.css"
 function App() {
   const [companies, setCompanies] = useState([])
   const [error, setError] = useState(undefined)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     getCompanies()
   }, [])
 
-  const getCompanies = async () => {
-    const result = await getCompaniesList()
+  const getCompanies = async (search) => {
+    setIsLoading(true)
+    const result = await getCompaniesList(search)
+    setIsLoading(false)
 
     if (!result.error) setCompanies(result.data)
-    // TODO - implement error handling
-    else setError(result.error)
+    else setError("Er ging iets mis met het ophalen van de bedrijven. Probeer het alstublieft (later) opnieuw.")
   }
 
   const closeErrorSnackbar = () => {
@@ -38,21 +40,20 @@ function App() {
       <Header />
 
       <Container className={styles.fixedContainer} fixed sx={{ display: "flex" }}>
-        <SearchField />
-        <CompaniesList companies={companies} />
+        <SearchField getCompanies={getCompanies} isLoading={isLoading} />
+        <CompaniesList companies={companies} isLoading={isLoading} />
       </Container>
 
       <Snackbar
         open={error}
         anchorOrigin={{
-          vertical: "bottom",
+          vertical: "top",
           horizontal: "center",
         }}
-        autoHideDuration={6000}
         onClose={closeErrorSnackbar}
       >
-        <Alert className={styles.alert} onClose={closeErrorSnackbar} severity="warning">
-          Er ging iets mis met het ophalen van de bedrijven. Probeer het alstublieft (later) opnieuw.
+        <Alert className={styles.alert} onClose={closeErrorSnackbar} severity="error">
+          <b>{error}</b>
         </Alert>
       </Snackbar>
     </Box >
