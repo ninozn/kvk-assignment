@@ -6,7 +6,7 @@ const baseUrl = "https://617c09aad842cf001711c200.mockapi.io/v1"
 const executeCall = (url, method = "GET", data) => {
     return axios({
         method: method,
-        url: "https://mock.codes/500", //baseUrl + url,
+        url: baseUrl + url,
         data: data
     }).then(function(response) {
         return response.data
