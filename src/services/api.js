@@ -1,19 +1,19 @@
-import axios from "axios";
+import axios from "axios"
 
-const baseUrl = "https://617c09aad842cf001711c200.mockapi.io/v1";
+const baseUrl = "https://617c09aad842cf001711c200.mockapi.io/v1"
 
 
-const executeCall = (url, method = 'GET', data) => {
+const executeCall = (url, method = "GET", data) => {
     return axios({
         method: method,
         url: baseUrl + url,
         data: data
     }).then(function(response) {
-        return response;
+        return response
     }).catch(function(error) {
         return { error }
-    });
-};
+    })
+}
 
 export const getCompaniesList = (search) => {
     // let url = `/companies`
@@ -22,6 +22,7 @@ export const getCompaniesList = (search) => {
 
     // return executeCall(url)
 
+    // TODO - Temporary to prevent API from having too many requests
     return {
         "data": [{
                 "id": "1",

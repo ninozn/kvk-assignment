@@ -1,21 +1,25 @@
 import TextField from "@mui/material/TextField"
-import InputAdornment from '@mui/material/InputAdornment';
-import SearchIcon from '@mui/icons-material/Search';
-import Button from "@mui/material/Button";
-import Box from '@mui/material/Box';
+import InputAdornment from "@mui/material/InputAdornment"
+import SearchIcon from "@mui/icons-material/Search"
+import Button from "@mui/material/Button"
+import Box from "@mui/material/Box"
+
+import styles from "../styles/SearchField.module.css"
+
 
 export default function SearchField() {
     const startSearch = () => {
-        console.log('START SEARCH')
+        console.log("START SEARCH")
     }
 
     const onMouseDown = e => {
-        if (e.key === 'Enter' || e.keyCode === 13) startSearch()
+        if (e.key === "Enter" || e.keyCode === 13) startSearch()
     }
 
     return (
-        <Box sx={{ display: 'flex' }} data-testid="search-container">
+        <Box className={styles.box} data-testid="search-container">
             <TextField
+                className={styles.textField}
                 InputProps={{
                     startAdornment: (
                         <InputAdornment position="start">
@@ -23,7 +27,6 @@ export default function SearchField() {
                         </InputAdornment>
                     ),
                 }}
-                sx={{ marginRight: "10px", background: '#ffffff' }}
                 placeholder="Zoeken..."
                 variant="outlined"
                 onKeyDown={onMouseDown}
@@ -32,10 +35,10 @@ export default function SearchField() {
             />
 
             <Button
+                className={styles.button}
                 variant="contained"
                 size="large"
                 onClick={startSearch}
-                xs={{ height: "100%" }}
                 data-testid="search-button"
             >
                 Zoeken

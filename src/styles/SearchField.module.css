@@ -1,0 +1,12 @@
+.box {
+    display: flex;
+}
+
+.textField {
+    margin-right: 10px;
+    background: #ffffff;
+}
+
+.button {
+    height: 100%;
+}

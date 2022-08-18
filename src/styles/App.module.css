@@ -1,0 +1,17 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.fixedContainer {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+}
+
+.alert {
+    width: 100%;
+}

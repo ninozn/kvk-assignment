@@ -1,0 +1,15 @@
+.card {
+    display: flex;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.cardContent {
+    flex: 1 0 auto;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}

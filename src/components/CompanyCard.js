@@ -1,11 +1,15 @@
-import PropTypes from 'prop-types';
-import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import CardActions from '@mui/material/CardActions';
-import Button from '@mui/material/Button';
+import PropTypes from "prop-types"
+
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Card from "@mui/material/Card"
+import CardActions from "@mui/material/CardActions"
+import CardContent from "@mui/material/CardMedia"
+import CardMedia from "@mui/material/CardMedia"
+import Typography from "@mui/material/Typography"
+
+import styles from "../styles/CompanyCard.module.css"
+
 
 export default function CompanyCard(props) {
     const { company } = props
@@ -15,18 +19,17 @@ export default function CompanyCard(props) {
     }
 
     return (
-        <Card sx={{ display: 'flex', cursor: 'pointer', margin: "10px" }} variant="outlined" onClick={getCompanyDetails}>
+        <Card className={styles.card} variant="outlined" onClick={getCompanyDetails}>
             <CardMedia
                 component="img"
                 sx={{ width: 120 }}
                 image={company.logo}
                 alt={`${company.name} logo`}
             />
-            <CardContent sx={{ flex: '1 0 auto' }}>
-                <Box sx={{ display: 'flex', flexDirection: 'column', padding: 2 }}>
+            <CardContent className={styles.cardContent}>
+                <Box className={styles.box}>
                     <Typography component="div" variant="h5">
                         {company.name}
-
                     </Typography>
 
                     {company.streetName} <br />

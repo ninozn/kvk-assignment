@@ -12,7 +12,9 @@ module.exports = {
     plugins: ["react"],
     rules: {
         "react/react-in-jsx-scope": "off",
-        'prettier/prettier': 0,
-        "no-unused-vars": "off"
+        "prettier/prettier": 0,
+        "no-unused-vars": "off",
+        "quotes": [2, "double", { "avoidEscape": true }],
+        "semi": ["error", "never"],
     },
-};
+}

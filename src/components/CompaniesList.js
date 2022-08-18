@@ -1,12 +1,16 @@
-import PropTypes from 'prop-types';
-import CompanyCard from './CompanyCard';
-import Paper from '@mui/material/Paper';
+import PropTypes from "prop-types"
+import Paper from "@mui/material/Paper"
+
+import CompanyCard from "./CompanyCard"
+
+import styles from "../styles/CompaniesList.module.css"
+
 
 export default function CompaniesList(props) {
     const { companies } = props
 
     return (
-        <Paper sx={{ overflow: 'auto', marginTop: '20px', padding: '0 20px', border: 'solid 1px rgba(0, 0, 0, 0.23)' }} data-testid="companies-list">
+        <Paper className={styles.paper} data-testid="companies-list">
             {companies.map(c => (
                 <CompanyCard key={c.id} company={c} />
             ))}
