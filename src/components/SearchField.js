@@ -7,7 +7,6 @@ import InputAdornment from "@mui/material/InputAdornment"
 import SearchIcon from "@mui/icons-material/Search"
 import TextField from "@mui/material/TextField"
 
-import { getCompaniesList } from "../services/api"
 import styles from "../styles/SearchField.module.css"
 
 

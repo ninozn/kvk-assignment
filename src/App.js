@@ -41,7 +41,7 @@ function App() {
 
       <Container className={styles.fixedContainer} fixed sx={{ display: "flex" }}>
         <SearchField getCompanies={getCompanies} isLoading={isLoading} />
-        <CompaniesList companies={companies} isLoading={isLoading} />
+        <CompaniesList companies={companies} isLoading={isLoading} setError={setError} />
       </Container>
 
       <Snackbar

@@ -1,4 +1,6 @@
+import { useState } from "react"
 import PropTypes from "prop-types"
+
 import Box from "@mui/material/Box"
 import CircularProgress from "@mui/material/CircularProgress"
 import Paper from "@mui/material/Paper"
@@ -7,12 +9,14 @@ import NoResultsIcon from "@mui/icons-material/SearchOff"
 import CompanyCard from "./CompanyCard"
 
 import styles from "../styles/CompaniesList.module.css"
+import CompanyDetailsDialog from "./CompanyDetailsDialog"
 
 
 export default function CompaniesList(props) {
-    const { companies, isLoading } = props
+    const { companies, isLoading, setError } = props
+    const [openDetailsForCompany, setOpenDetailsForCompany] = useState(undefined)
 
-    const getContent = () => {
+    const getListContent = () => {
         if (isLoading) {
             return (
                 <Box className={styles.box} sx={{ display: "flex" }}>
@@ -23,7 +27,7 @@ export default function CompaniesList(props) {
         }
         else if (companies.length > 0) {
             return companies.map(c => (
-                <CompanyCard key={c.id} company={c} />
+                <CompanyCard key={c.id} company={c} setOpenDetailsForCompany={setOpenDetailsForCompany} />
             ))
         }
         else {
@@ -36,14 +40,24 @@ export default function CompaniesList(props) {
         }
     }
 
+    console.log(openDetailsForCompany)
+
     return (
         <Paper className={styles.paper} data-testid="companies-list">
-            {getContent()}
+            {getListContent()}
+
+            <CompanyDetailsDialog
+                open={Boolean(openDetailsForCompany)}
+                onClose={() => setOpenDetailsForCompany(undefined)}
+                company={openDetailsForCompany}
+                setError={setError}
+            />
         </Paper>
     )
 }
 
 CompaniesList.propTypes = {
     companies: PropTypes.array.isRequired,
-    isLoading: PropTypes.bool.isRequired
+    isLoading: PropTypes.bool.isRequired,
+    setError: PropTypes.func.isRequired,
 }

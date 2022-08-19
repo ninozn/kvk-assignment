@@ -1,0 +1,24 @@
+.image {
+    height: 150px;
+    width: 150px;
+    text-align: center;
+}
+
+.detailsContainer {
+    margin-top: 20px;
+}
+
+.icon {
+    font-size: 25px;
+    color: #626262;
+    margin-right: 10px;
+}
+
+.iconTextBox {
+    display: flex;
+    margin-top: 10px;
+}
+
+.link {
+    color: inherit;
+}

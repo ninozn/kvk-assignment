@@ -12,14 +12,10 @@ import styles from "../styles/CompanyCard.module.css"
 
 
 export default function CompanyCard(props) {
-    const { company } = props
-
-    const getCompanyDetails = () => {
-        console.log("GET DETAILS")
-    }
+    const { company, setOpenDetailsForCompany } = props
 
     return (
-        <Card className={styles.card} variant="outlined" onClick={getCompanyDetails}>
+        <Card className={styles.card} variant="outlined" onClick={() => setOpenDetailsForCompany(company)}>
             <CardMedia
                 component="img"
                 sx={{ width: 120 }}
@@ -44,5 +40,6 @@ export default function CompanyCard(props) {
 }
 
 CompanyCard.propTypes = {
-    company: PropTypes.object.isRequired
+    company: PropTypes.object.isRequired,
+    setOpenDetailsForCompany: PropTypes.func.isRequired
 }

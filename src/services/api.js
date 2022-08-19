@@ -15,11 +15,10 @@ const executeCall = (url, method = "GET", data) => {
     })
 }
 
-export const getCompaniesList = (search) => {
+export const getCompaniesList = search => {
     let url = "/companies"
 
     if (search) url += `?search=${search}`
-
     return executeCall(url)
 
     // TODO - Temporary to prevent API from having too many requests
@@ -387,4 +386,9 @@ export const getCompaniesList = (search) => {
     //     ],
     //     "total": 40
     // }
+}
+
+export const getCompanyDetails = id => {
+    let url = `/companies/${id}/details`
+    return executeCall(url)
 }
