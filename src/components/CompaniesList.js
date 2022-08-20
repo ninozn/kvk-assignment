@@ -20,7 +20,7 @@ export default function CompaniesList(props) {
         if (isLoading) {
             return (
                 <Box className={styles.box} sx={{ display: "flex" }}>
-                    <CircularProgress />
+                    <CircularProgress data-testid="loading-companies" />
                 </Box>
             )
 
@@ -32,15 +32,13 @@ export default function CompaniesList(props) {
         }
         else {
             return (
-                <Box className={styles.box}>
+                <Box className={styles.box} data-testid="no-companies-found">
                     <NoResultsIcon className={styles.icon} />
                     Geen bedrijven gevonden.
                 </Box>
             )
         }
     }
-
-    console.log(openDetailsForCompany)
 
     return (
         <Paper className={styles.paper} data-testid="companies-list">

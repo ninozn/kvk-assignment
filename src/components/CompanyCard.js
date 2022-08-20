@@ -15,7 +15,12 @@ export default function CompanyCard(props) {
     const { company, setOpenDetailsForCompany } = props
 
     return (
-        <Card className={styles.card} variant="outlined" onClick={() => setOpenDetailsForCompany(company)}>
+        <Card
+            className={styles.card}
+            variant="outlined"
+            onClick={() => setOpenDetailsForCompany(company)}
+            data-testid="companies-card"
+        >
             <CardMedia
                 component="img"
                 sx={{ width: 120 }}
