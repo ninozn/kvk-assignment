@@ -11,11 +11,10 @@ import styles from "../styles/SearchField.module.css"
 
 
 export default function SearchField(props) {
-    const { getCompanies, isLoading } = props
-    const [search, setSearch] = useState("")
+    const { getCompanies, search, setSearch } = props
 
     const startSearch = async () => {
-        getCompanies(search)
+        getCompanies(true)
     }
 
     const onMouseDown = e => {
@@ -62,5 +61,6 @@ export default function SearchField(props) {
 
 SearchField.propTypes = {
     getCompanies: PropTypes.func.isRequired,
-    isLoading: PropTypes.bool.isRequired
+    setSearch: PropTypes.func.isRequired,
+    search: PropTypes.string.isRequired,
 }

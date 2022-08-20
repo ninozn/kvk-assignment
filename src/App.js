@@ -17,19 +17,39 @@ function App() {
   const [companies, setCompanies] = useState([])
   const [error, setError] = useState(undefined)
   const [isLoading, setIsLoading] = useState(false)
+  const [isLoadingNextPage, setIsLoadingNextPage] = useState(false)
+  const [page, setPage] = useState(1)
+  const [totalCompanies, setTotalCompanies] = useState(1)
+  const [search, setSearch] = useState("")
 
   useEffect(() => {
-    getCompanies()
+    getCompanies(true)
   }, [])
 
-  const getCompanies = async (search) => {
-    setIsLoading(true)
-    const result = await getCompaniesList(search)
+  const getCompanies = async (reset = false) => {
+    let newPage
 
-    if (!result.error) setCompanies(result.data)
+    if (reset) {
+      newPage = 1
+      setIsLoading(true)
+    } else {
+      newPage = page + 1
+      setIsLoadingNextPage(true)
+    }
+
+    const result = await getCompaniesList(search, newPage)
+
+    if (!result.error) {
+      setTotalCompanies(result.total)
+      if (!reset) setCompanies([...companies, ...result.data])
+      else setCompanies(result.data)
+    }
     else setError("Er ging iets mis met het ophalen van de bedrijven. Probeer het alstublieft (later) opnieuw.")
 
-    setIsLoading(false)
+    setPage(newPage)
+
+    if (reset) setIsLoading(false)
+    else setIsLoadingNextPage(false)
   }
 
   const closeErrorSnackbar = () => {
@@ -41,8 +61,19 @@ function App() {
       <Header />
 
       <Container className={styles.fixedContainer} fixed sx={{ display: "flex" }}>
-        <SearchField getCompanies={getCompanies} isLoading={isLoading} />
-        <CompaniesList companies={companies} isLoading={isLoading} setError={setError} />
+        <SearchField
+          getCompanies={getCompanies}
+          search={search}
+          setSearch={setSearch}
+        />
+        <CompaniesList
+          companies={companies}
+          isLoading={isLoading}
+          setError={setError}
+          hasNextPage={companies.length !== totalCompanies}
+          getCompanies={getCompanies}
+          isLoadingNextPage={isLoadingNextPage}
+        />
       </Container>
 
       <Snackbar

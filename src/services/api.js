@@ -21,10 +21,10 @@ const executeCall = (url, method = "GET", data) => {
     })
 }
 
-export const getCompaniesList = search => {
-    let url = "/companies"
+export const getCompaniesList = (search, page = 1, limit = 10) => {
+    let url = `/companies?page=${page}&limit=${limit}`
 
-    if (search) url += `?search=${search}`
+    if (search) url += `&search=${search}`
     return executeCall(url)
 }
 

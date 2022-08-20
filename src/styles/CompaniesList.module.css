@@ -18,3 +18,8 @@
 .icon {
     font-size: 40px;
 }
+
+.loadMoreContainer {
+    justify-content: center;
+    padding: 20px;
+}
