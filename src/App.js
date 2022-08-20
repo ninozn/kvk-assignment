@@ -25,10 +25,11 @@ function App() {
   const getCompanies = async (search) => {
     setIsLoading(true)
     const result = await getCompaniesList(search)
-    setIsLoading(false)
 
     if (!result.error) setCompanies(result.data)
     else setError("Er ging iets mis met het ophalen van de bedrijven. Probeer het alstublieft (later) opnieuw.")
+
+    setIsLoading(false)
   }
 
   const closeErrorSnackbar = () => {

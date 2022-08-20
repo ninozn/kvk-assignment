@@ -43,7 +43,6 @@ export default function SearchField(props) {
                 value={search}
                 onKeyDown={onMouseDown}
                 onChange={onChange}
-                disabled={isLoading}
                 fullWidth
                 data-testid="search-field"
             />
@@ -53,7 +52,6 @@ export default function SearchField(props) {
                 variant="contained"
                 size="large"
                 onClick={startSearch}
-                disabled={isLoading}
                 data-testid="search-button"
             >
                 Zoeken
