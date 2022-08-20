@@ -45,7 +45,7 @@ export default function CompanyDetailsDialog(props) {
         >
             <DialogContent>
                 {isLoading ?
-                    <Box sx={{ display: "flex" }}>
+                    <Box className={styles.loadingContainer} sx={{ display: "flex" }}>
                         <CircularProgress />
                     </Box>
                     :
